@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dev-project
+  namespace: argocd
+spec:
+  sourceRepos:
+    - https://github.com/sravan-kumarc/argocd-helm-app
+
+  destinations:
+    - namespace: dev
+      server: https://kubernetes.default.svc
+
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
